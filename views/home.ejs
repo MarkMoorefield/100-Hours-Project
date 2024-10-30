@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <% if (user) { %>
+                    <li class="header-li header-btn"><a href="/auth/logout">Log out</a></li>
+                    <% } else { %>
+                    <li class="header-li header-btn"><a href="/auth/login">Login</a></li>
+                    <% } %>
+                <li class="header-li"><a href="/">Homepage</a></li>
+                <li class="header-li"><a href="/profile">Profile</a></li>
+            </ul>  
+        </nav>
+        <section>
+            <form action="/" method="POST">
+                <div class="container" method="post" action="/">
+                    <input class="form-control" name="title" required="true">
+                </div>
+                <div class="container" method="post" action="/">
+                    <input class="form-control" name="rating" required="true">
+                </div>
+                <div class="container" method="post" action="/">
+                    <textarea name="description" required="true"></textarea>
+                </div>
+                <button type="submit">Add movie to your collection</button>
+           </form>
+        </section>
+        <div>
+               <ul>
+                    <% if (user) { %>
+                        <% for (let i = 0; i < user.movies.length; i++) { %>
+                            <li> 
+                                <a href="/movies/<%= user.movies[i]._id%>"> <%= user.movies[i].title %> </a>
+                                <span><%= user.movies[i].rating %></span>
+                             </li>
+                        <% } %>
+                        <% } else { %>
+                        Please Login to create and see your movies listed!
+                        <% } %>
+              </ul> 
+    </header>
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Homepage</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <% if (user) { %>
+                    <li class="header-li header-btn"><a href="/auth/logout">Log out</a></li>
+                    <% } else { %>
+                    <li class="header-li header-btn"><a href="/auth/login">Login</a></li>
+                    <% } %>
+                <li><a href="/">Homepage</a></li>
+            </ul>
+        </nav>
+        <header>
+            <h1>Welcome to your profile, <%= user.username %>!</h1>
+        </header>
+        <main>
+            <span>You have reviewed <%= user.movies.length %> movies and TV shows!</span>
+        </main>
+    </body>
+</html>

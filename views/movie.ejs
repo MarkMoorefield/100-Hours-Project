@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <% if (user) { %>
+                    <li class="header-li header-btn"><a href="/auth/logout">Log out</a></li>
+                    <% } else { %>
+                    <li class="header-li header-btn"><a href="/auth/login">Login</a></li>
+                    <% } %>
+                <li class="header-li"><a href="/">Homepage</a></li>
+                <li class="header-li"><a href="/profile">Profile</a></li>
+            </ul>  
+        </nav>
+    </header>
+    <section>
+        <h2><%= movie.title %></h2>
+        <h3><%= movie.rating %></h3>
+        <p><%= movie.description %></p>
+        <form
+        action="/deleteMovie/movie.id"
+        method="DELETE"
+      >
+        <button type="submit">Delete Review</button>
+      </form>
+    </section>
+</body>
+<script>
+
+</script>
+</html>
